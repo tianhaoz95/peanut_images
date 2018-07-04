@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build_base_ros:
+  build:
     machine: true
     working_directory: ~/project/images/base_ros
     steps:
