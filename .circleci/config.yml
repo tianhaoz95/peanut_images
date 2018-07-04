@@ -44,5 +44,16 @@ jobs:
           command: |
             docker push $DOCKER_USERNAME/ros_gazebo_node:alpha && sleep 10
 
+      - run:
+          name: build ros_websim docker image
+          command: |
+            cd images/ros_websim
+            docker build -t $DOCKER_USERNAME/ros_websim:alpha .
+
+      - run:
+          name: upload ros_websim image to dockerhub
+          command: |
+            docker push $DOCKER_USERNAME/ros_websim:alpha && sleep 10
+
       - store_artifacts:
           path: /results
