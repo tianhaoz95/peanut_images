@@ -9,10 +9,10 @@ jobs:
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
       - run:
-        name: build base_ros docker image
-        command: |
-          cd images/base_ros
-          docker build -t $DOCKER_USERNAME/base_ros:alpha .
+          name: build base_ros docker image
+          command: |
+            cd images/base_ros
+            docker build -t $DOCKER_USERNAME/base_ros:alpha .
 
       - run: docker push $DOCKER_USERNAME/base_ros:alpha && sleep 10
 
