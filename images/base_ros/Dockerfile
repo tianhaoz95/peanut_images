@@ -35,5 +35,3 @@ ENV ROS_DISTRO kinetic
 RUN apt-get update && apt-get install -y \
     ros-kinetic-ros-core=1.3.2-0* \
     && rm -rf /var/lib/apt/lists/*
-
-WORKDIR /app

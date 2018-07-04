@@ -6,7 +6,10 @@ jobs:
     steps:
       - checkout
 
-      - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      - run:
+          name: login dockerhub
+          command: |
+            docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
       - run:
           name: build base_ros docker image
@@ -14,7 +17,21 @@ jobs:
             cd images/base_ros
             docker build -t $DOCKER_USERNAME/base_ros:alpha .
 
-      - run: docker push $DOCKER_USERNAME/base_ros:alpha && sleep 10
+      - run:
+          name: upload base_ros image to dockerhub
+          command: |
+            docker push $DOCKER_USERNAME/base_ros:alpha && sleep 10
+
+      - run:
+          name: build ros_gazebo docker image
+          command: |
+            cd images/ros_gazebo
+            docker build -t $DOCKER_USERNAME/ros_gazebo:alpha .
+
+      - run:
+          name: upload ros_gazebo image to dockerhub
+          command: |
+            docker push $DOCKER_USERNAME/ros_gazebo:alpha && sleep 10
 
       - store_artifacts:
           path: /results
