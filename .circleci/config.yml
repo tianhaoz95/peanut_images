@@ -33,5 +33,16 @@ jobs:
           command: |
             docker push $DOCKER_USERNAME/ros_gazebo:alpha && sleep 10
 
+      - run:
+          name: build ros_gazebo_node docker image
+          command: |
+            cd images/ros_gazebo_node
+            docker build -t $DOCKER_USERNAME/ros_gazebo_node:alpha .
+
+      - run:
+          name: upload ros_gazebo_node image to dockerhub
+          command: |
+            docker push $DOCKER_USERNAME/ros_gazebo_node:alpha && sleep 10
+
       - store_artifacts:
           path: /results
