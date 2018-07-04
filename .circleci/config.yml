@@ -1,13 +1,12 @@
 version: 2
-
 jobs:
   build:
     machine: true
-    working_directory: ~/project/images/base_ros
+    working_directory: ~/repo/images/base_ros
     steps:
       - checkout
 
-      - run: run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
       - run: docker build -t $DOCKER_USERNAME/base_ros:alpha .
 
