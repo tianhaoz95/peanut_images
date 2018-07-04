@@ -13,4 +13,4 @@ jobs:
       - run: docker push $DOCKER_USERNAME/base_ros:alpha && sleep 10
 
       - store_artifacts:
-        path: /results
+          path: /results
