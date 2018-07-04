@@ -1,14 +1,18 @@
 version: 2
 jobs:
-  build_ros_base:
+  build:
     machine: true
-    working_directory: ~/repo/images/base_ros
+    working_directory: ~/repo
     steps:
       - checkout
 
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
-      - run: docker build -t $DOCKER_USERNAME/base_ros:alpha .
+      - run:
+        name: build base_ros docker image
+        command: |
+          cd images/base_ros
+          docker build -t $DOCKER_USERNAME/base_ros:alpha .
 
       - run: docker push $DOCKER_USERNAME/base_ros:alpha && sleep 10
 
