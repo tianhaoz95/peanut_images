@@ -19,3 +19,7 @@ RUN apt install -y mercurial
 RUN apt install -y cmake
 
 RUN apt install -y build-essential
+
+COPY . /app
+
+RUN /app/gzweb_installation.sh
