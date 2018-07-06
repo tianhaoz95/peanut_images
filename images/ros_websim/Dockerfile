@@ -23,3 +23,5 @@ RUN apt install -y build-essential
 COPY . /app
 
 RUN /app/gzweb_installation.sh
+
+EXPOSE 8080
