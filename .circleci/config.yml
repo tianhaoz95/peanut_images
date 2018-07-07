@@ -66,5 +66,16 @@ jobs:
           command: |
             docker push $DOCKER_USERNAME/ros_peanut:alpha && sleep 10
 
+      - run:
+          name: build ros_peanut_sim docker image
+          command: |
+            cd images/ros_peanut_sim
+            docker build -t $DOCKER_USERNAME/ros_peanut_sim:alpha .
+
+      - run:
+          name: upload ros_peanut_sim image to dockerhub
+          command: |
+            docker push $DOCKER_USERNAME/ros_peanut_sim:alpha && sleep 10
+
       - store_artifacts:
           path: /results
