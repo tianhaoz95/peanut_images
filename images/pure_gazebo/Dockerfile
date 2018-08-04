@@ -10,7 +10,7 @@ RUN sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb
 
 RUN wget http://packages.osrfoundation.org/gazebo.key -O - | apt-key add -
 
-RUN apt-get -y update
+RUN apt-get update
 
 RUN apt-get -y install gazebo9
 
